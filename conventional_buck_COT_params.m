@@ -1,5 +1,5 @@
 % Parameters for conventional (non-sync) buck
-% VMC and CMC available
+% Optimised for current-mode control (CMC)
 
 % Timing params
 % NB: COT produces variable Fsw, but adaptation possible
@@ -12,7 +12,10 @@ RelTol      = 1e-12;
 DCM_en  = 1;
 
 % Enable current-mode control
-% Note: VMC with COT modulator is 'V^2 control'
+% This model has been optimised only for CMC
+% %
+% VMC with COT modulator is 'V^2 control'
+% TODO: VMC optimisation
 CMC_en  = 1;
 
 % Basic buck electrical params
@@ -42,16 +45,17 @@ r_C = 3e-3;
 r_dson_top = 5e-3;
 
 
-%Io_max = 20;
-
 % Ramp params
 %V_ramp_max  = 10;
 %V_ramp_min  = 0;
 
 % PID controller parameters
 Kp = 400;
-Ki = 25e3;
+Ki = 100e3;
 Kd = 0;
+
+PID_Iclamp_max = 150;
+PID_Iclamp_min = -75;
 
 % Initial conditions, which can reduce sim start-up time
 I_L_int = 0.5;

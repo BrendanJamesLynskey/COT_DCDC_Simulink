@@ -33,5 +33,5 @@ title('Output current i_O');
 figure(nfig); nfig = nfig+1;
 grid;
 plot(t, q, 'r');
-title('Switching signal');
+title('PID control signal');
 
